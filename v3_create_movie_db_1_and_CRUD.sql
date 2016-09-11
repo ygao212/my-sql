@@ -1,0 +1,11 @@
+CREATE SCHEMA IF NOT EXISTS movie_db_1 CHARACTER SET = utf8;
+USE movie_db_1;
+CREATE TABLE IF NOT EXISTS actors (name VARCHAR(50) NOT NULL);
+show ENGINES;
+CREATE TABLE IF NOT EXISTS movies (title VARCHAR(50) NOT NULL, year INTEGER) ENGINE InnoDB;
+INSERT INTO movies VALUES ("Avatar", 2009), ("Avatar 2", NULL);
+INSERT INTO movies SET title = "Back to the Future", year = 1985;
+SET sql_safe_updates = 0;
+UPDATE movies SET year = 2015, title = "Avatar Reloaded" WHERE title = "Avatar 2";
+DELETE FROM movies where title = "Avatar Reloaded" And year - 2015;
+SET sql_safe_updates = 1;
